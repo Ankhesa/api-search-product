@@ -1,0 +1,22 @@
+ext {
+    lombokVer = "1.18.16"
+    springbootVer = "2.4.5"
+    mockitoVer = '3.2.4'
+    archunitVer = '0.11.0'
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web:${springbootVer}")
+    compileOnly("org.projectlombok:lombok:${lombokVer}")
+    annotationProcessor("org.projectlombok:lombok:${lombokVer}")
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    implementation group: 'com.google.guava', name: 'guava', version: '30.1.1-jre'
+    // https://mvnrepository.com/artifact/javax.validation/validation-api
+    implementation("org.springframework.boot:spring-boot-starter-validation:${springbootVer}")
+    implementation("org.springframework.boot:spring-boot-starter-actuator:${springbootVer}")
+
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:${springbootVer}"
+    testImplementation "org.mockito:mockito-inline:${mockitoVer}"
+
+}
