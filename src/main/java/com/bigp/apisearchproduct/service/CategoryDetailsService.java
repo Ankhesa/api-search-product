@@ -27,6 +27,8 @@ public class CategoryDetailsService {
     private Comparator<CategoryDetailsResponse> getComparator(CategorySort sortType) {
         if (CategorySort.RANKED.equals(sortType)) {
             return (h1, h2) -> h1.getRank().compareTo(h2.getRank());
+        }else if(CategorySort.ALPHABETIC.equals(sortType)) {
+            return (h1, h2) -> h1.getName().compareTo(h2.getName());
         }
         return (categoryDetailsResponse, t1) ->
                 categoryDetailsResponse.getName().compareTo(t1.getName());
