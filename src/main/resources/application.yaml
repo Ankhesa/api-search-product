@@ -3,3 +3,4 @@ name: api-search-product
 server:
   servlet:
     context-path: /ws/api/api-search-product/v1
+  port: 9080

@@ -7,7 +7,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class CategoryDetailsResponse {
-    private final String categorySort;
+    private final String categoryId;
     private final String name;
-    private final String rank;
+    private String rank;
+    private String description;
 }
