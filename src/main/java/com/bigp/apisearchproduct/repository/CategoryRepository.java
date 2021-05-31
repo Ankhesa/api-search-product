@@ -16,13 +16,9 @@ public class CategoryRepository {
         this.categoryServiceClient = categoryServiceClient;
     }
 
-    public String getCategoryDetails(String sort) {
-        return categoryServiceClient.getCategory(sort);
-    }
-
-    public List<ProductDetailsResponse> getActiveCategories() {
-        return categoryServiceClient.getActiveCategories().getCategories().stream().sorted()
-                .map(category -> new CategoryDetailsResponse(category.getCategoryId(), category.getName(), category.getRank()))
+    public List<CategoryDetailsResponse> getActiveCategories() {
+        return categoryServiceClient.getActiveCategories().getCategories().stream()
+                .map(category -> new CategoryDetailsResponse(category.getCategoryId(), category.getName(), category.getRank(), category.getDescription()))
                 .collect(Collectors.toList());
     }
 }

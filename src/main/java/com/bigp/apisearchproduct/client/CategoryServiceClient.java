@@ -1,9 +1,6 @@
 package com.bigp.apisearchproduct.client;
 
-import com.bigp.apisearchproduct.client.domain.CategoryRequest;
 import com.bigp.apisearchproduct.client.domain.CategoryResponse;
-import com.bigp.apisearchproduct.client.domain.ProductRequest;
-import com.bigp.apisearchproduct.client.domain.ProductResponse;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +16,6 @@ public class CategoryServiceClient {
     }
 
     public CategoryResponse getActiveCategories() {
-        return restTemplate.getForObject("/categories", CategoryResponse.class);
+        return restTemplate.getForObject("/categories?active=true", CategoryResponse.class);
     }
 }
