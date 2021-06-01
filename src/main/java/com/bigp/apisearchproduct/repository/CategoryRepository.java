@@ -18,7 +18,7 @@ public class CategoryRepository {
 
     public List<CategoryDetailsResponse> getActiveCategories() {
         return categoryServiceClient.getActiveCategories().getCategories().stream()
-                .map(category -> new CategoryDetailsResponse(category.getCategoryId(), category.getName(), category.getRank(), category.getDescription()))
+                .map(category -> new CategoryDetailsResponse(category.getId(), category.getName(), category.getRank(), category.getDescription()))
                 .collect(Collectors.toList());
     }
 }
