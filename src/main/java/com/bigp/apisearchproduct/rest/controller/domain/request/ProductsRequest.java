@@ -1,6 +1,5 @@
 package com.bigp.apisearchproduct.rest.controller.domain.request;
 
-import com.bigp.apisearchproduct.rest.controller.validation.CategoryAndNameValidation;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +11,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @NoArgsConstructor
-@CategoryAndNameValidation
+//@CategoryAndNameValidation
 public class ProductsRequest {
     @NotNull (message = "categoryId cannot be null")
     private CategoryType categoryId;

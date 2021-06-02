@@ -26,10 +26,13 @@ public class CategoryDetailsService {
 
     private Comparator<CategoryDetailsResponse> getComparator(CategorySort sortType) {
         if (CategorySort.RANKED.equals(sortType)) {
-            return (h1, h2) -> h1.getRank().compareTo(h2.getRank());
+            return Comparator.comparing(CategoryDetailsResponse::getRank);
+        }else if(CategorySort.ALPHABETIC.equals(sortType)) {
+            return Comparator.comparing(CategoryDetailsResponse::getName);
         }
-        return (categoryDetailsResponse, t1) ->
-                categoryDetailsResponse.getName().compareTo(t1.getName());
+
+            return Comparator.comparing(CategoryDetailsResponse::getId);
+
     }
 
 
