@@ -7,8 +7,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class ProductDetailsResponse {
-    private final String productId;
+    private final String id;
     private final String description;
-    private final int quantity;
-    private final String category;
+    private final Long quantity;
+    private final Long categoryId;
 }

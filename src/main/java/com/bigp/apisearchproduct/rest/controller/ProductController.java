@@ -1,7 +1,6 @@
 package com.bigp.apisearchproduct.rest.controller;
 
-import com.bigp.apisearchproduct.rest.controller.domain.request.ProductDetailsRequest;
-import com.bigp.apisearchproduct.rest.controller.domain.request.ProductsRequest;
+import com.bigp.apisearchproduct.rest.controller.domain.request.ProductRequest;
 import com.bigp.apisearchproduct.rest.controller.domain.response.ProductDetailsResponse;
 import com.bigp.apisearchproduct.service.ProductDetailsService;
 import org.springframework.http.HttpStatus;
@@ -22,15 +21,9 @@ public class ProductController {
         this.productDetailsService = productDetailsService;
     }
 
-    @PostMapping("/product-details")
-    @ResponseBody
-    public ResponseEntity<ProductDetailsResponse> getProductDetails(@RequestBody @Valid ProductDetailsRequest productDetailsRequest) {
-        return new ResponseEntity<>(productDetailsService.getProductDetails(productDetailsRequest), HttpStatus.OK);
-    }
-
     @PostMapping("/products")
     @ResponseBody
-    public ResponseEntity<List<ProductDetailsResponse>> getProducts(@RequestBody @Valid ProductsRequest productsRequest) {
-        return new ResponseEntity<>(productDetailsService.getProducts(productsRequest), HttpStatus.OK);
+    public ResponseEntity<List<ProductDetailsResponse>> getProducts(@RequestBody @Valid ProductRequest productRequest) {
+        return new ResponseEntity<>(productDetailsService.getProducts(productRequest), HttpStatus.OK);
     }
 }

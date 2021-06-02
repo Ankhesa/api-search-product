@@ -1,6 +1,5 @@
 package com.bigp.apisearchproduct.client.domain;
 
-import com.bigp.apisearchproduct.client.domain.Product;
 import lombok.Getter;
 import lombok.Setter;
 

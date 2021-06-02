@@ -1,7 +1,7 @@
 package com.bigp.apisearchproduct.repository;
 
 import com.bigp.apisearchproduct.client.ProductServiceClient;
-import com.bigp.apisearchproduct.rest.controller.domain.request.ProductsRequest;
+import com.bigp.apisearchproduct.rest.controller.domain.request.ProductRequest;
 import com.bigp.apisearchproduct.rest.controller.domain.response.ProductDetailsResponse;
 import org.springframework.stereotype.Repository;
 
@@ -16,14 +16,12 @@ public class ProductRepository {
         this.productServiceClient = productServiceClient;
     }
 
-    public String getProductDetails(String productId) {
-        return productServiceClient.getProduct(productId);
-    }
 
-    public List<ProductDetailsResponse> getProducts(ProductsRequest productsRequest) {
-        return productServiceClient.getProducts().getProducts().stream()
-                .filter(product -> product.getCategoryId().equals(productsRequest.getCategoryId()))
-                .map(product -> new ProductDetailsResponse(product.getId(), product.getDescription(), 1,
+
+    public List<ProductDetailsResponse> getProductsByCategoryId(ProductRequest productRequest) {
+        return productServiceClient.getProductsByCategoryId(productRequest.getCategoryId()).getProducts().stream()
+                .filter(product -> product.getCategoryId().equals(productRequest.getCategoryId()))
+                .map(product -> new ProductDetailsResponse(product.getId(), product.getDescription(), product.getQuantity(),
                         product.getCategoryId()))
                 .collect(Collectors.toList());
     }
