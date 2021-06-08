@@ -18,9 +18,9 @@ public class ProductRepository {
 
 
 
-    public List<ProductDetailsResponse> getProductsByCategoryId(ProductRequest productRequest) {
-        return productServiceClient.getProductsByCategoryId(productRequest.getCategoryId()).getProducts().stream()
-                .filter(product -> product.getCategoryId().equals(productRequest.getCategoryId()))
+    public List<ProductDetailsResponse> getProductsByCategoryId(Long categoryId) {
+        return productServiceClient.getProductsByCategoryId(categoryId).getProducts().stream()
+                .filter(product -> product.getCategoryId().equals(categoryId))
                 .map(product -> new ProductDetailsResponse(product.getId(), product.getDescription(), product.getQuantity(),
                         product.getCategoryId()))
                 .collect(Collectors.toList());

@@ -5,10 +5,7 @@ import com.bigp.apisearchproduct.rest.controller.domain.response.ProductDetailsR
 import com.bigp.apisearchproduct.service.ProductDetailsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,9 +18,8 @@ public class ProductController {
         this.productDetailsService = productDetailsService;
     }
 
-    @PostMapping("/products")
-    @ResponseBody
-    public ResponseEntity<List<ProductDetailsResponse>> getProducts(@RequestBody @Valid ProductRequest productRequest) {
-        return new ResponseEntity<>(productDetailsService.getProducts(productRequest), HttpStatus.OK);
+    @GetMapping("/products/{categoryId}")
+    public ResponseEntity<List<ProductDetailsResponse>> getProducts(@PathVariable @Valid Long categoryId) {
+        return new ResponseEntity<>(productDetailsService.getProducts(categoryId), HttpStatus.OK);
     }
 }

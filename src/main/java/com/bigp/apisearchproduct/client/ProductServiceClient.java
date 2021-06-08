@@ -18,10 +18,7 @@ public class ProductServiceClient {
     }
 
     public ProductResponse getProductsByCategoryId(Long categoryId) {
-        ProductRequest productRequest = new ProductRequest();
-        productRequest.setCategoryId(categoryId);
-        return restTemplate.postForObject("/products",
-                productRequest,
-                ProductResponse.class);
+        return restTemplate.getForObject("/products?categoryId={categoryId}",
+                ProductResponse.class,categoryId);
     }
 }

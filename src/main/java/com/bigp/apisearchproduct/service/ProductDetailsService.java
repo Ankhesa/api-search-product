@@ -1,9 +1,6 @@
 package com.bigp.apisearchproduct.service;
 
 import com.bigp.apisearchproduct.repository.ProductRepository;
-import com.bigp.apisearchproduct.rest.controller.domain.request.CategorySort;
-import com.bigp.apisearchproduct.rest.controller.domain.request.ProductDetailsRequest;
-import com.bigp.apisearchproduct.rest.controller.domain.request.ProductRequest;
 import com.bigp.apisearchproduct.rest.controller.domain.response.ProductDetailsResponse;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +15,7 @@ public class ProductDetailsService {
         this.productRepository = productRepository;
     }
 
-    public List<ProductDetailsResponse> getProducts(ProductRequest productRequest) {
-        return productRepository.getProductsByCategoryId(productRequest);
+    public List<ProductDetailsResponse> getProducts(Long categoryId) {
+        return productRepository.getProductsByCategoryId(categoryId);
     }
 }
