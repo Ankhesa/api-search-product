@@ -12,11 +12,12 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 //@CategoryAndNameValidation
-public class ProductsRequest {
-    @NotNull (message = "categoryId cannot be null")
+public class ProductRequest {
+    private Long categoryId;
+/*    @NotNull (message = "categoryId cannot be null")
     private CategoryType categoryId;
     @Size (min = 3)
     @NotNull
     @Pattern (regexp = "[a-zA-Z]+", message = "Only alphanumeric")
-    private String name;
+    private String name; */
 }
