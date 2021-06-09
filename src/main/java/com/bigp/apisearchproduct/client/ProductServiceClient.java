@@ -18,7 +18,7 @@ public class ProductServiceClient {
     }
 
     public ProductResponse getProductsByCategoryId(Long categoryId) {
-        return restTemplate.getForObject("/products?categoryId={categoryId}",
+        return restTemplate.getForObject("/products/{categoryId}",
                 ProductResponse.class,categoryId);
     }
 }
