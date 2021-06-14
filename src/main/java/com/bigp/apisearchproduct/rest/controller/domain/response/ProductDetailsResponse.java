@@ -9,6 +9,6 @@ import lombok.Getter;
 public class ProductDetailsResponse {
     private final String id;
     private final String description;
-    private final Long quantity;
+    private String name;
     private final Long categoryId;
 }

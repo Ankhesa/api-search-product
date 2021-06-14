@@ -18,4 +18,8 @@ public class ProductDetailsService {
     public List<ProductDetailsResponse> getProducts(Long categoryId) {
         return productRepository.getProductsByCategoryId(categoryId);
     }
+
+    public List<ProductDetailsResponse> getProduct(Long productId) {
+        return productRepository.getProductById(productId);
+    }
 }

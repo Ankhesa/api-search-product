@@ -2,6 +2,7 @@ package com.bigp.apisearchproduct.client;
 
 import com.bigp.apisearchproduct.client.domain.ProductResponse;
 import com.bigp.apisearchproduct.rest.controller.domain.request.ProductRequest;
+import com.bigp.apisearchproduct.rest.controller.domain.response.ProductDetailsResponse;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -20,5 +21,10 @@ public class ProductServiceClient {
     public ProductResponse getProductsByCategoryId(Long categoryId) {
         return restTemplate.getForObject("/products/{categoryId}",
                 ProductResponse.class,categoryId);
+    }
+
+    public ProductResponse getProductById(Long productId) {
+        return restTemplate.getForObject("/product/{productId}",
+                ProductResponse.class,productId);
     }
 }

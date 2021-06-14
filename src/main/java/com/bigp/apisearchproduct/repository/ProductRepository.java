@@ -21,7 +21,14 @@ public class ProductRepository {
     public List<ProductDetailsResponse> getProductsByCategoryId(Long categoryId) {
         return productServiceClient.getProductsByCategoryId(categoryId).getProducts().stream()
                 .filter(product -> product.getCategoryId().equals(categoryId))
-                .map(product -> new ProductDetailsResponse(product.getId(), product.getDescription(), product.getQuantity(),
+                .map(product -> new ProductDetailsResponse(product.getId(), product.getName(), product.getDescription(),
+                        product.getCategoryId()))
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductDetailsResponse> getProductById(Long productId) {
+        return productServiceClient.getProductById(productId).getProducts().stream()
+                .map(product -> new ProductDetailsResponse(product.getId(), product.getName(), product.getDescription(),
                         product.getCategoryId()))
                 .collect(Collectors.toList());
     }

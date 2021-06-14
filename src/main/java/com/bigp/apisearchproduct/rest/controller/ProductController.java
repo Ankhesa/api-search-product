@@ -22,4 +22,9 @@ public class ProductController {
     public ResponseEntity<List<ProductDetailsResponse>> getProducts(@PathVariable @Valid Long categoryId) {
         return new ResponseEntity<>(productDetailsService.getProducts(categoryId), HttpStatus.OK);
     }
+
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<List<ProductDetailsResponse>> getProduct(@PathVariable @Valid Long productId) {
+        return new ResponseEntity<>(productDetailsService.getProduct(productId),HttpStatus.OK);
+    }
 }
