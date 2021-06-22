@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class Category {
     private String id;
-    private String rank;
+    private String ranking;
     private String name;
     private String description;
 
