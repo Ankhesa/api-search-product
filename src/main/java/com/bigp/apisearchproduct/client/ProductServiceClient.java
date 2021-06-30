@@ -1,5 +1,6 @@
 package com.bigp.apisearchproduct.client;
 
+import com.bigp.apisearchproduct.client.domain.Product;
 import com.bigp.apisearchproduct.client.domain.ProductResponse;
 import com.bigp.apisearchproduct.rest.controller.domain.request.ProductRequest;
 import com.bigp.apisearchproduct.rest.controller.domain.response.ProductDetailsResponse;
@@ -23,8 +24,11 @@ public class ProductServiceClient {
                 ProductResponse.class,categoryId);
     }
 
-    public ProductResponse getProductById(Long productId) {
-        return restTemplate.getForObject("/product/{productId}",
-                ProductResponse.class,productId);
+
+    public Product getProductById(Long productId) {
+        ProductRequest productRequest = new ProductRequest();
+        productRequest.setIdProduct(productId);
+        return restTemplate.getForObject("/product/{idProduct}",
+                Product.class, productId);
     }
 }

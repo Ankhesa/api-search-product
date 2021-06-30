@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 //@CategoryAndNameValidation
 public class ProductRequest {
     private Long categoryId;
+    private Long idProduct;
 /*    @NotNull (message = "categoryId cannot be null")
     private CategoryType categoryId;
     @Size (min = 3)

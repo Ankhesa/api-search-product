@@ -2,7 +2,6 @@ package com.bigp.apisearchproduct.repository;
 
 import com.bigp.apisearchproduct.client.CategoryServiceClient;
 import com.bigp.apisearchproduct.rest.controller.domain.response.CategoryDetailsResponse;
-import com.bigp.apisearchproduct.rest.controller.domain.response.ProductDetailsResponse;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public class CategoryRepository {
 
     public List<CategoryDetailsResponse> getActiveCategories() {
         return categoryServiceClient.getActiveCategories().getCategories().stream()
-                .map(category -> new CategoryDetailsResponse(category.getId(), category.getName(), category.getRank(), category.getDescription()))
+                .map(category -> new CategoryDetailsResponse(category.getId(), category.getName(), category.getRanking(), category.getDescription()))
                 .collect(Collectors.toList());
     }
 }

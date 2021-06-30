@@ -25,13 +25,14 @@ public class CategoryDetailsService {
     }
 
     private Comparator<CategoryDetailsResponse> getComparator(CategorySort sortType) {
+
         if (CategorySort.RANKED.equals(sortType)) {
-            return Comparator.comparing(CategoryDetailsResponse::getRank);
-        }else if(CategorySort.ALPHABETIC.equals(sortType)) {
+            return Comparator.comparing(CategoryDetailsResponse::getRanking);
+        } else if (CategorySort.ALPHABETIC.equals(sortType)) {
             return Comparator.comparing(CategoryDetailsResponse::getName);
         }
-
             return Comparator.comparing(CategoryDetailsResponse::getId);
+
 
     }
 

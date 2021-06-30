@@ -1,6 +1,7 @@
 package com.bigp.apisearchproduct.repository;
 
 import com.bigp.apisearchproduct.client.ProductServiceClient;
+import com.bigp.apisearchproduct.client.domain.Product;
 import com.bigp.apisearchproduct.rest.controller.domain.request.ProductRequest;
 import com.bigp.apisearchproduct.rest.controller.domain.response.ProductDetailsResponse;
 import org.springframework.stereotype.Repository;
@@ -26,10 +27,7 @@ public class ProductRepository {
                 .collect(Collectors.toList());
     }
 
-    public List<ProductDetailsResponse> getProductById(Long productId) {
-        return productServiceClient.getProductById(productId).getProducts().stream()
-                .map(product -> new ProductDetailsResponse(product.getId(), product.getName(), product.getDescription(),
-                        product.getCategoryId()))
-                .collect(Collectors.toList());
+    public Product getProductById(Long productId) {
+        return productServiceClient.getProductById(productId);
     }
 }

@@ -9,6 +9,6 @@ import lombok.Getter;
 public class CategoryDetailsResponse {
     private final String id;
     private final String name;
-    private String rank;
+    private String ranking;
     private String description;
 }
