@@ -2,10 +2,11 @@ package com.bigp.apisearchproduct.client;
 
 import com.bigp.apisearchproduct.client.domain.Product;
 import com.bigp.apisearchproduct.client.domain.ProductResponse;
+import com.bigp.apisearchproduct.exception.CategoryIdNotFoundException;
 import com.bigp.apisearchproduct.rest.controller.domain.request.ProductRequest;
-import com.bigp.apisearchproduct.rest.controller.domain.response.ProductDetailsResponse;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 @Component
@@ -20,8 +21,12 @@ public class ProductServiceClient {
     }
 
     public ProductResponse getProductsByCategoryId(Long categoryId) {
-        return restTemplate.getForObject("/products/{categoryId}",
-                ProductResponse.class,categoryId);
+        try {
+            return restTemplate.getForObject("/products/{categoryId}",
+                    ProductResponse.class,categoryId);
+        } catch (RestClientException restClientException) {
+            throw new CategoryIdNotFoundException(restClientException.getMessage());
+        }
     }
 
 

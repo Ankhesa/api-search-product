@@ -1,5 +1,6 @@
 package com.bigp.apisearchproduct.rest.controller;
 
+import com.bigp.apisearchproduct.exception.CategoryIdNotFoundException;
 import com.bigp.apisearchproduct.exception.ProductOutOfStockException;
 import com.google.common.collect.Maps;
 import org.springframework.http.HttpStatus;
@@ -22,12 +23,12 @@ public class ProductControllerAdviceHandler {
         return new ResponseEntity<>(statusMap, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(value = {Exception.class})
-    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseEntity<Map<String, String>> handleException(Exception exception) {
+    @ExceptionHandler(value = {CategoryIdNotFoundException.class})
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public ResponseEntity<Map<String, String>> handleCategoryIdNotFoundException(CategoryIdNotFoundException categoryIdNotFoundException) {
         Map<String, String> statusMap = Maps.newHashMap();
-        statusMap.put("message", exception.getMessage());
+        statusMap.put("message", categoryIdNotFoundException.getMessage());
 
-        return new ResponseEntity<>(statusMap, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(statusMap, HttpStatus.NOT_FOUND);
     }
 }
